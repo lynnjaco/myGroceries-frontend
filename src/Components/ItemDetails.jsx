@@ -19,6 +19,17 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
         })
     }, [API, id, navigate])
 
+    function handleDelete(e) {
+        e.preventDefault();
+        fetch(`${API}/groceries/${id}`, {
+        method: "DELETE"
+        })
+        .then(() => {
+        navigate("/")
+        })
+        .catch((error) => console.error(error))
+    }    
+
     return (
         <div id='item-details-container' className='row'>
             <div id='detailed-item-img-cont' className='center'>
@@ -59,7 +70,7 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
                 <div id='moidfy-button-cont' className='row'>
                     <Link to="/"><button className='modify-button'>Go Back</button></Link>
                     <button className='modify-button'>Update</button>
-                    <button className='modify-button'>Delete</button>
+                    <button className='modify-button' onClick={handleDelete}>Delete</button>
                 </div>
             </div>
 

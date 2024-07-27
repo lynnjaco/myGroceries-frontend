@@ -31,7 +31,7 @@ function App() {
     const year = date.getFullYear();
     return `${month}-${day}-${year}`;
 }
-  
+
   return (
     <>
       <NavBar/>
