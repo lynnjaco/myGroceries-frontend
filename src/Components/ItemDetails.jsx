@@ -1,6 +1,6 @@
 import './ItemDetails.css'
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 function ItemDetails({ API, convertDateToMMDDYYYY }) {
     const {id} = useParams();
@@ -57,9 +57,9 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
                 <p id='item-added-text'>Item Added: {convertDateToMMDDYYYY(currentGroceryItem.dateadded)}</p>
 
                 <div id='moidfy-button-cont' className='row'>
+                    <Link to="/"><button className='modify-button'>Go Back</button></Link>
                     <button className='modify-button'>Update</button>
                     <button className='modify-button'>Delete</button>
-                    <button className='modify-button'>Go Back</button>
                 </div>
             </div>
 

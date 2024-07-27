@@ -1,0 +1,16 @@
+#groceries-container {
+    background: white;
+    padding: 20px;
+    border-radius: 9px;
+}
+
+.container-label {
+    background: #F76C5E;
+    width: 200px;
+    height: 50px;
+    border-radius: 9px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
