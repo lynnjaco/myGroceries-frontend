@@ -15,6 +15,7 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
         .then(response => response.json())
         .then(res => {
             setCurrentGroceryItem(res);
+            setInputResponses(res);
         })
         .catch((error) => {
             console.error(error);
@@ -45,9 +46,9 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
 
     function handleSaveChanges(e) {
         e.preventDefault();
+        console.log(inputResponses);
 
-        const jsonData = JSON.stringify(inputResponses);
-
+        const jsonData = JSON.stringify(inputResponses); 
         fetch(`${API}/groceries/${id}`, {
             method: 'PUT',
             headers: {
@@ -55,10 +56,11 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
             },
             body: jsonData
         })
-        .then(response => {
-            console.log(jsonData);
-            response.json()
-            navigate(`/groceries/${id}`);
+        .then(response => response.json())
+        .then(res => {
+            console.log(inputResponses);
+            setInputResponses(res);
+            setCurrentGroceryItem(res);
             setUpdateMode(false);
         })
         .catch((error) => {
@@ -67,10 +69,10 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
     }
 
     // updateable inputs
-    function handlePPUChange(e) {
+    function handleInputChange(key, e) {
         setInputResponses(prevInputResponses => ({
             ...prevInputResponses,
-            price: e.target.value
+            [key]: e.target.value
         }));
     }
 
@@ -86,12 +88,12 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
 
                 <div className='row detail'>
                     <p>Quantity</p>
-                    {updateMode ? <input type='number' min={1}/> : <p>{currentGroceryItem.quantity}</p>}
+                    {updateMode ? <input type='number' min={1} value={inputResponses.quantity} onChange={(e) => handleInputChange("quantity", e) }/> : <p>{currentGroceryItem.quantity}</p>}
                 </div>
 
                 <div className='row detail'>
                     <p>Price Per Unit</p>
-                    {updateMode ? <input type='number' min={0.01} onChange={handlePPUChange}/> : <p>${(currentGroceryItem.price)}</p>}
+                    {updateMode ? <input type='number' min={0.01} value={inputResponses.price} onChange={(e) => handleInputChange("price", e)}/> : <p>${(currentGroceryItem.price)}</p>}
                 </div>
 
                 <div className='row detail'>
