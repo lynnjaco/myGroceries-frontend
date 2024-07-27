@@ -84,8 +84,8 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
 
             <div id='details-container' className='center'>
                 <img className='organic-indicator' src={ currentGroceryItem.is_organic ? '/assets/organic-green.svg' : '/assets/organic-greyed.svg'} alt='Organic Indicator' title='Organic Indicator'/>
+                {currentGroceryItem.is_organic ? <p id='organic-text' className='uppercase'>Organic</p> : null}
                 <p id='detailed-item-name'>{currentGroceryItem.name}</p>
-
                 <div className='row detail'>
                     <p>Quantity</p>
                     {updateMode ? <input type='number' min={1} value={inputResponses.quantity} onChange={(e) => handleInputChange("quantity", e) }/> : <p>{currentGroceryItem.quantity}</p>}
