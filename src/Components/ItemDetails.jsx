@@ -6,6 +6,7 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
     const {id} = useParams();
     const navigate = useNavigate();
     const [currentGroceryItem, setCurrentGroceryItem] = useState("");
+    const [updateMode, setUpdateMode] = useState(false);
 
     useEffect(() => {
         fetch(`${API}/groceries/${id}`)
@@ -30,6 +31,13 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
         .catch((error) => console.error(error))
     }    
 
+    function handleUpdate(e) {
+        e.preventDefault();
+        return updateMode ? setUpdateMode(false) : setUpdateMode(true);
+    }
+
+    
+
     return (
         <div id='item-details-container' className='row'>
             <div id='detailed-item-img-cont' className='center'>
@@ -42,12 +50,12 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
 
                 <div className='row detail'>
                     <p>Quantity</p>
-                    <p>{currentGroceryItem.quantity}</p>
+                    {updateMode ? <input type='number' min={1}/> : <p>{currentGroceryItem.quantity}</p>}
                 </div>
 
                 <div className='row detail'>
                     <p>Price Per Unit</p>
-                    <p>${currentGroceryItem.price}</p>
+                    {updateMode ? <input type='number' min={0.01}/> : <p>${currentGroceryItem.price}</p>}
                 </div>
 
                 <div className='row detail'>
@@ -68,8 +76,8 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
                 <p id='item-added-text'>Item Added: {convertDateToMMDDYYYY(currentGroceryItem.dateadded)}</p>
 
                 <div id='moidfy-button-cont' className='row'>
-                    <Link to="/"><button className='modify-button'>Go Back</button></Link>
-                    <button className='modify-button'>Update</button>
+                    {updateMode ? <button className='modify-button'>Cancel</button> : <Link to="/"><button className='modify-button'>Go Back</button></Link>}
+                    {updateMode ? <button className='modify-button'>Save</button> :<button className='modify-button' onClick={handleUpdate}>Update</button>}
                     <button className='modify-button' onClick={handleDelete}>Delete</button>
                 </div>
             </div>
