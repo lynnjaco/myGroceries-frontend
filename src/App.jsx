@@ -24,6 +24,13 @@ function App() {
     .catch( error => console.error(error))
   }, [])
 
+  function convertDateToMMDDYYYY(isoDate) {
+    const date = new Date(isoDate);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}-${day}-${year}`;
+}
   
   return (
     <>
@@ -32,7 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <GroceriesManager groceries={groceries}/> }/>
           <Route path="/about" element={ <About /> }/>
-          <Route path="/groceries/:id" element={ <ItemDetails API={API}/> }/>
+          <Route path="/groceries/:id" element={ <ItemDetails API={API} convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
         </Routes>
       </Router>
     </>
