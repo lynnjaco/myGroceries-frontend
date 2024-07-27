@@ -10,19 +10,7 @@ import NavBar from './Components/NavBar'
 import ItemDetails from './Components/ItemDetails'
 
 function App() {
-  const API = import.meta.env.VITE_API_URL;
   const [groceries, setGroceries] = useState([]);
-
-  useEffect(() => {
-    fetch(`${API}/groceries`)
-    .then((response) => {
-      return response.json()
-    })
-    .then((res) => {
-      setGroceries(res);
-    })
-    .catch( error => console.error(error))
-  }, [])
 
   function convertDateToMMDDYYYY(isoDate) {
     const date = new Date(isoDate);
@@ -37,9 +25,9 @@ function App() {
       <NavBar/>
       <Router>
         <Routes>
-          <Route path="/" element={ <GroceriesManager groceries={groceries}/> }/>
+          <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries}/> }/>
           <Route path="/about" element={ <About /> }/>
-          <Route path="/groceries/:id" element={ <ItemDetails API={API} convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
+          <Route path="/groceries/:id" element={ <ItemDetails convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
         </Routes>
       </Router>
     </>

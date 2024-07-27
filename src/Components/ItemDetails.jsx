@@ -2,11 +2,13 @@ import './ItemDetails.css'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
-function ItemDetails({ API, convertDateToMMDDYYYY }) {
+function ItemDetails({ convertDateToMMDDYYYY }) {
+    const API = import.meta.env.VITE_API_URL;
     const {id} = useParams();
     const navigate = useNavigate();
     const [currentGroceryItem, setCurrentGroceryItem] = useState("");
     const [updateMode, setUpdateMode] = useState(false);
+    const [inputResponses, setInputResponses] = useState({});
 
     useEffect(() => {
         fetch(`${API}/groceries/${id}`)
@@ -38,9 +40,39 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
 
     function handleCancel(e) {
         e.preventDefault();
-        location.reload();
+        setUpdateMode(false);
     }
 
+    function handleSaveChanges(e) {
+        e.preventDefault();
+
+        const jsonData = JSON.stringify(inputResponses);
+
+        fetch(`${API}/groceries/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData
+        })
+        .then(response => {
+            console.log(jsonData);
+            response.json()
+            navigate(`/groceries/${id}`);
+            setUpdateMode(false);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    // updateable inputs
+    function handlePPUChange(e) {
+        setInputResponses(prevInputResponses => ({
+            ...prevInputResponses,
+            price: e.target.value
+        }));
+    }
 
     return (
         <div id='item-details-container' className='row'>
@@ -59,12 +91,12 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
 
                 <div className='row detail'>
                     <p>Price Per Unit</p>
-                    {updateMode ? <input type='number' min={0.01}/> : <p>${currentGroceryItem.price}</p>}
+                    {updateMode ? <input type='number' min={0.01} onChange={handlePPUChange}/> : <p>${(currentGroceryItem.price)}</p>}
                 </div>
 
                 <div className='row detail'>
                     <p>Total Value Of Inventory</p>
-                    <p>${currentGroceryItem.price * currentGroceryItem.quantity}</p>
+                    <p>${(currentGroceryItem.price * currentGroceryItem.quantity).toFixed(2)}</p>
                 </div>
 
                 <div className='row detail'>
@@ -81,7 +113,7 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
 
                 <div id='moidfy-button-cont' className='row'>
                     {updateMode ? <button className='modify-button' onClick={handleCancel}>Cancel</button> : <Link to="/"><button className='modify-button'>Go Back</button></Link>}
-                    {updateMode ? <button className='modify-button'>Save</button> :<button className='modify-button' onClick={handleUpdate}>Update</button>}
+                    {updateMode ? <button className='modify-button' onClick={handleSaveChanges}>Save</button> :<button className='modify-button' onClick={handleUpdate}>Update</button>}
                     <button className='modify-button' onClick={handleDelete}>Delete</button>
                 </div>
             </div>

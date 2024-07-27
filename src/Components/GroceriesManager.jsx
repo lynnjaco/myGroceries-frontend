@@ -3,11 +3,11 @@ import './GroceriesManager.css'
 import Groceries from './Groceries'
 import NewGroceryForm from './NewGroceryForm'
 
-function GroceriesManager({groceries}) {
+function GroceriesManager({groceries, setGroceries}) {
     return (
         <>
             <NewGroceryForm />
-            <Groceries groceries={groceries}/>
+            <Groceries groceries={groceries} setGroceries={setGroceries}/>
         </>
     )
 }

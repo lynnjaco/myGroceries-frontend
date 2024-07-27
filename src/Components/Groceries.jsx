@@ -1,7 +1,21 @@
 import './Groceries.css'
+import { useEffect } from 'react'
 import GroceryItem from './GroceryItem'
 
-function Groceries({groceries}) {
+function Groceries({groceries, setGroceries}) {
+    const API = import.meta.env.VITE_API_URL;
+
+    useEffect(() => {
+        fetch(`${API}/groceries`)
+        .then((response) => {
+        return response.json()
+        })
+        .then((res) => {
+        setGroceries(res);
+        })
+        .catch( error => console.error(error))
+    }, [])
+
     return (
         <>
             <div className='container-label col center'>
