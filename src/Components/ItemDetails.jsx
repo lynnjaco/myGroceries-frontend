@@ -36,7 +36,11 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
         return updateMode ? setUpdateMode(false) : setUpdateMode(true);
     }
 
-    
+    function handleCancel(e) {
+        e.preventDefault();
+        location.reload();
+    }
+
 
     return (
         <div id='item-details-container' className='row'>
@@ -76,7 +80,7 @@ function ItemDetails({ API, convertDateToMMDDYYYY }) {
                 <p id='item-added-text'>Item Added: {convertDateToMMDDYYYY(currentGroceryItem.dateadded)}</p>
 
                 <div id='moidfy-button-cont' className='row'>
-                    {updateMode ? <button className='modify-button'>Cancel</button> : <Link to="/"><button className='modify-button'>Go Back</button></Link>}
+                    {updateMode ? <button className='modify-button' onClick={handleCancel}>Cancel</button> : <Link to="/"><button className='modify-button'>Go Back</button></Link>}
                     {updateMode ? <button className='modify-button'>Save</button> :<button className='modify-button' onClick={handleUpdate}>Update</button>}
                     <button className='modify-button' onClick={handleDelete}>Delete</button>
                 </div>
