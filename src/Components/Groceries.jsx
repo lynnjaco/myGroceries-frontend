@@ -7,7 +7,7 @@ function Groceries({groceries}) {
             <p>Groceries List</p>
             <div className='flex-evenly'>
                 {groceries.map( groceryItem => (
-                    <GroceryItem name={groceryItem.name} category={groceryItem.category} quantity={groceryItem.quantity} organic={groceryItem.is_organic}/>
+                    <GroceryItem key={groceryItem.id} name={groceryItem.name} category={groceryItem.category} quantity={groceryItem.quantity} organic={groceryItem.is_organic} id={groceryItem.id}/>
                 ))}
             </div>
         </>

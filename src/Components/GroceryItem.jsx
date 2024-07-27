@@ -1,6 +1,8 @@
 import './GroceryItem.css'
+import { Link } from 'react-router-dom'
 
-function GroceryItem({name, category, quantity, organic}) {
+
+function GroceryItem({name, category, quantity, organic, id}) {
     return (
         <div className='grocery-item-container col'>
             <img className='organic-indicator' src={ organic ? '/assets/organic-green.svg' : '/assets/organic-greyed.svg'} alt='Organic Indicator' title='Organic Indicator'/>
@@ -25,7 +27,7 @@ function GroceryItem({name, category, quantity, organic}) {
             </div> */}
 
             <div className='row center'>
-                <button className='grocery-item-button'>Details</button>
+                <Link to={`/groceries/${id}`}><button className='grocery-item-button'>Details</button></Link>
                 <button className='grocery-item-button'>Delete</button>
             </div>
 

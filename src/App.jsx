@@ -6,8 +6,8 @@ import './App.css'
 // Components
 import GroceriesManager from './Components/GroceriesManager'
 import About from './Components/About'
-import GroceryItem from './Components/GroceryItem'
 import NavBar from './Components/NavBar'
+import ItemDetails from './Components/ItemDetails'
 
 function App() {
   const API = import.meta.env.VITE_API_URL;
@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <GroceriesManager groceries={groceries}/> }/>
           <Route path="/about" element={ <About /> }/>
-          <Route path="/groceries/:id" element={ <GroceryItem /> }/>
+          <Route path="/groceries/:id" element={ <ItemDetails API={API}/> }/>
         </Routes>
       </Router>
     </>
