@@ -1,14 +1,15 @@
-#view-links-container {
-    background: #f7f7f2;
-    color: #676d67;
+#stats-container {
+    width: 100%;
+    background: white;
+    justify-content: space-between;
 }
 
-.view-link {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 500;
+.stat {
+    margin: 10px 80px;
+    color: grey;
 }
 
-.view-link:hover {
-    color: #ed7d3a;
-    cursor: pointer;
+.stat-total {
+    margin-left: 10px;
+    font-size: 25px;
 }

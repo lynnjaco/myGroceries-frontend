@@ -23,13 +23,10 @@ function App() {
 }
 
   return (
-    <>
-      <GroceryStats groceries={groceries} setGroceries={setGroceries}/>
-
+    <div className='col'>
       <Router>
-        <div id='navbar-container'>
           <NavBar/>
-        </div>
+          <GroceryStats groceries={groceries} setGroceries={setGroceries}/>
         <Routes>
           <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries}/> }/>
           <Route path="/addgroceryitem" element={ <NewGroceryForm/> }/>
@@ -38,7 +35,7 @@ function App() {
         </Routes>
       </Router>
       
-    </>
+    </div>
   )
 }
 

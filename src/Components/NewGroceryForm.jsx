@@ -36,9 +36,8 @@ function NewGroceryForm() {
         }));
     }
 
-    return ( formPopUpView && 
+    return ( 
         <div id="add-item-form-container">
-            <button onClick={handleCloseForm}>X</button>
             <p>New Grocery Form</p>
             <form>
                 <label for='item-name'>Name</label>
