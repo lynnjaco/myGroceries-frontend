@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NewGroceryForm.css'
 
 function NewGroceryForm() {
@@ -35,8 +35,10 @@ function NewGroceryForm() {
             [key]: e.target.value
         }));
     }
-    return (
-        <>
+
+    return ( formPopUpView && 
+        <div id="add-item-form-container">
+            <button onClick={handleCloseForm}>X</button>
             <p>New Grocery Form</p>
             <form>
                 <label for='item-name'>Name</label>
@@ -72,7 +74,8 @@ function NewGroceryForm() {
 
                 <input type='submit' onClick={handleSubmit}/>
             </form>
-        </>
+            <Link to="/"><button>Cancel</button></Link>
+        </div>
     )
 }
 

@@ -1,3 +1,14 @@
 #mygroceries-title-text {
-    color: rgb(102, 109, 115);
+    font-family:'Courier New', Courier, monospace;
+    color: #ed7d3a;
+    font-size: 40px;
+}
+
+.navbar-section {
+    width: 33%;
+}
+
+.navbar-icon {
+    width: 30px;
+    margin: 0 20px;
 }
