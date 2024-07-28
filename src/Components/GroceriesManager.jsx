@@ -6,7 +6,7 @@ import NewGroceryForm from './NewGroceryForm'
 function GroceriesManager({groceries, setGroceries}) {
     return (
         <>
-            <NewGroceryForm />
+            {/* <NewGroceryForm /> */}
             <Groceries groceries={groceries} setGroceries={setGroceries}/>
         </>
     )

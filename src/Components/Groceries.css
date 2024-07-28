@@ -1,11 +1,11 @@
 #groceries-container {
-    background: white;
+    background: #f7f7f2;
     padding: 20px;
     border-radius: 9px;
 }
 
 .container-label {
-    background: #F76C5E;
+    background: #ed7d3a;
     width: 200px;
     height: 50px;
     border-radius: 9px;
@@ -13,4 +13,19 @@
     font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.category-title {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    color: #a8b6af;
+    width: 100%;
+    height: 30px;
+}
+
+hr {
+    width: 80%;
+    border: 0.25px solid #c0c0c0;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

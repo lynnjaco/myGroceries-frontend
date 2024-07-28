@@ -12,14 +12,15 @@ function GroceryItem({name, category, quantity, organic, id}) {
 
             <p className='grocery-item-name'>{name}</p>
             <div className='grocery-detail row'>
+                <p>Quantity</p>
+                <p className='grocery-item-quantity'>{quantity}</p>
+            </div>
+            <div className='grocery-detail row'>
                 <p>Category</p>
                 <p className='grocery-item-category'>{category}</p>
             </div>
 
-            <div className='grocery-detail row'>
-                <p>Quantity</p>
-                <p className='grocery-item-quantity'>{quantity}</p>
-            </div>
+            
 
             {/* <div className='grocery-detail row'>
                 <p>Price</p>

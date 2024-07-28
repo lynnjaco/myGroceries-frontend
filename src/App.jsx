@@ -8,6 +8,7 @@ import GroceriesManager from './Components/GroceriesManager'
 import About from './Components/About'
 import NavBar from './Components/NavBar'
 import ItemDetails from './Components/ItemDetails'
+import GroceryStats from './Components/GroceryStats'
 
 function App() {
   const [groceries, setGroceries] = useState([]);
@@ -22,7 +23,14 @@ function App() {
 
   return (
     <>
-      <NavBar/>
+      <div id='navbar-container'>
+        <NavBar/>
+      </div>
+
+      <div>
+        <GroceryStats groceries={groceries} setGroceries={setGroceries}/>
+      </div>
+
       <Router>
         <Routes>
           <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries}/> }/>
@@ -30,6 +38,7 @@ function App() {
           <Route path="/groceries/:id" element={ <ItemDetails convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
         </Routes>
       </Router>
+      
     </>
   )
 }

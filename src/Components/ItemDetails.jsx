@@ -68,7 +68,7 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
         });
     }
 
-    // updateable inputs
+    // dynamically handle updateable inputs
     function handleInputChange(key, e) {
         setInputResponses(prevInputResponses => ({
             ...prevInputResponses,
