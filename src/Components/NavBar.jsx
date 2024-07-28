@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function NavBar() {
 
     return (
-        <div className='row space-evenly center'>
+        <div id='navbar-container' className='row space-evenly center'>
             <div className='navbar-section row center'>
                 <Link to="/"><img className='navbar-icon' src='/assets/homeicon.svg' alt='Home Icon'/></Link>
                 <Link to="/about"><img className='navbar-icon' src='/assets/abouticon.svg' alt='About Icon'/></Link>

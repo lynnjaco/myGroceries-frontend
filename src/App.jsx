@@ -8,7 +8,6 @@ import GroceriesManager from './Components/GroceriesManager'
 import About from './Components/About'
 import NavBar from './Components/NavBar'
 import ItemDetails from './Components/ItemDetails'
-import GroceryStats from './Components/GroceryStats'
 import NewGroceryForm from './Components/NewGroceryForm'
 
 function App() {
@@ -26,15 +25,13 @@ function App() {
     <div className='col'>
       <Router>
           <NavBar/>
-          <GroceryStats groceries={groceries} setGroceries={setGroceries}/>
         <Routes>
           <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries}/> }/>
           <Route path="/addgroceryitem" element={ <NewGroceryForm/> }/>
           <Route path="/about" element={ <About /> }/>
           <Route path="/groceries/:id" element={ <ItemDetails convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
         </Routes>
-      </Router>
-      
+      </Router> 
     </div>
   )
 }
