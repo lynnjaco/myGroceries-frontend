@@ -16,7 +16,7 @@ function GroceryItem({name, category, quantity, organic, id, expiration}) {
         const differenceInDays = (expirationDate - today) / oneDay;
         return differenceInDays >= 0 && differenceInDays <= 14;
     }
-
+    
     return (
         <div className='grocery-item-container col'>
             <div className='row indicators-container'>

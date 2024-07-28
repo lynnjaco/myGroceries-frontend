@@ -2,7 +2,7 @@ import './ItemDetails.css'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
-function ItemDetails({ convertDateToMMDDYYYY }) {
+function ItemDetails({ convertDateToMMDDYYYY, getExpiringItems, getExpiredItems }) {
     const API = import.meta.env.VITE_API_URL;
     const {id} = useParams();
     const navigate = useNavigate();
@@ -79,6 +79,7 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
     return (
         <div id='item-details-container' className='row'>
             <div id='detailed-item-img-cont' className='center'>
+                {getExpiredItems(currentGroceryItem.expiration) ? <img id='expired-stamp' src='/assets/expiredstamp-01.svg' alt='Expired Stamp' /> : null }
                 <img id='detailed-item-img' src={`https://www.themealdb.com/images/ingredients/${currentGroceryItem.name}.png`} alt={`${currentGroceryItem.name} Image`}/>
             </div>
 

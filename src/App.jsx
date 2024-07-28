@@ -21,6 +21,19 @@ function App() {
     return `${month}-${day}-${year}`;
 }
 
+  const today = new Date();
+
+  function getExpiredItems(expiration) {
+      return new Date(expiration) < today;
+  } 
+
+  function getExpiringItems(expiration) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const expirationDate = new Date(expiration);
+      const differenceInDays = (expirationDate - today) / oneDay;
+      return differenceInDays >= 0 && differenceInDays <= 14;
+  }
+
   return (
     <div className='col'>
       <Router>
@@ -29,7 +42,7 @@ function App() {
           <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries} convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
           <Route path="/addgroceryitem" element={ <NewGroceryForm/> }/>
           <Route path="/about" element={ <About /> }/>
-          <Route path="/groceries/:id" element={ <ItemDetails convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
+          <Route path="/groceries/:id" element={ <ItemDetails getExpiredItems={getExpiredItems} getExpiringItems={getExpiringItems} convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
         </Routes>
       </Router> 
     </div>

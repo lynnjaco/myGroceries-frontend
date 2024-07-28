@@ -11,9 +11,16 @@
 
 #detailed-item-img-cont {
     width: 40%;
+    position: relative;
 }
 #detailed-item-img {
     width: 100%;
+}
+#expired-stamp {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
 }
 
 #detailed-item-name {
