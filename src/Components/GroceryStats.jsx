@@ -1,6 +1,6 @@
 import './GroceryStats.css'
 
-function GroceryStats({ groceries, setGroceries }) {
+function GroceryStats({ groceries }) {
 
     return (
        <div id='stats-container' className='row space-evenly center'>

@@ -6,5 +6,13 @@ body {
 
 button {
   border: none;
-  height: 30px;
+  border-radius: 4px;
+  height: 40px;
+  padding: 0.3em 1em;
+  background-color: #ff9f68;
+  color: white;
+}
+
+button:hover {
+  background-color: #fc8a48;
 }

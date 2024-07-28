@@ -6,6 +6,7 @@
     border-radius: 9px;
     align-items: center;
     padding: 40px;
+    margin: 0 auto;
 }
 
 #detailed-item-img-cont {
@@ -51,11 +52,5 @@
     margin-top: 30px;
 }
 .modify-button {
-    background-color: #F76C5E;
-    color: white;
-    text-transform: uppercase;
     width: 150px;
-}
-.modify-button:hover {
-    background-color: #dc6b61;
 }

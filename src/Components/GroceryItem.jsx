@@ -20,16 +20,9 @@ function GroceryItem({name, category, quantity, organic, id}) {
                 <p className='grocery-item-category'>{category}</p>
             </div>
 
-            
-
-            {/* <div className='grocery-detail row'>
-                <p>Price</p>
-                <p className='grocery-item-price'>$1.98</p>
-            </div> */}
-
             <div className='row center'>
-                <Link to={`/groceries/${id}`}><button className='grocery-item-button'>Details</button></Link>
-                <button className='grocery-item-button'>Delete</button>
+                <Link to={`/groceries/${id}`}><button className='grocery-item-button'> See Details</button></Link>
+                {/* <button className='grocery-item-button'>Delete</button> */}
             </div>
 
         </div>

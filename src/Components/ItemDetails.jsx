@@ -114,7 +114,7 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
                 <p id='item-added-text'>Item Added: {convertDateToMMDDYYYY(currentGroceryItem.dateadded)}</p>
 
                 <div id='moidfy-button-cont' className='row'>
-                    {updateMode ? <button className='modify-button' onClick={handleCancel}>Cancel</button> : <Link to="/"><button className='modify-button'>Go Back</button></Link>}
+                    {updateMode ? <button className='modify-button' onClick={handleCancel}>Cancel</button> : <Link to="/"><button className='modify-button'>View Groceries</button></Link>}
                     {updateMode ? <button className='modify-button' onClick={handleSaveChanges}>Save</button> :<button className='modify-button' onClick={handleUpdate}>Update</button>}
                     <button className='modify-button' onClick={handleDelete}>Delete</button>
                 </div>
