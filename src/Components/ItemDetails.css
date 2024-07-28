@@ -61,3 +61,45 @@
 .modify-button {
     width: 150px;
 }
+
+#meal-suggestions-cont {
+    width: 1000px;
+    height: 500px;
+    background-color: white;
+    border-radius: 9px;
+    align-items: center;
+    padding: 40px;
+    margin: 20px auto;
+}
+
+.meal-suggestions-text {
+    color: #726862;
+    margin: 5px;
+}
+
+#meals-cont {
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    margin-top: 30px;
+    height: 400px;
+}
+.meal-container {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 9px;
+    padding: 10px 5px;
+}
+.meal-name {
+    color: #ed7d3a;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+.meal-image {
+    width: 80%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px rgb(57, 55, 55);
+}
