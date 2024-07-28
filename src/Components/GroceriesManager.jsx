@@ -2,8 +2,9 @@ import './GroceriesManager.css'
 // Components
 import Groceries from './Groceries'
 import GroceryStats from './GroceryStats'
+import ExpiringList from './ExpiringList'
 
-function GroceriesManager({groceries, setGroceries}) {
+function GroceriesManager({groceries, setGroceries, convertDateToMMDDYYYY}) {
     return (
         <>
             <GroceryStats groceries={groceries} setGroceries={setGroceries}/>

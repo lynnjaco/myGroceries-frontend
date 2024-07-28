@@ -2,10 +2,28 @@ import './GroceryItem.css'
 import { Link } from 'react-router-dom'
 
 
-function GroceryItem({name, category, quantity, organic, id}) {
+function GroceryItem({name, category, quantity, organic, id, expiration}) {
+
+    const today = new Date();
+
+    function getExpiredItems(expiration) {
+        return new Date(expiration) < today;
+    } 
+
+    function getExpiringItems(expiration) {
+        const oneDay = 24 * 60 * 60 * 1000;
+        const expirationDate = new Date(expiration);
+        const differenceInDays = (expirationDate - today) / oneDay;
+        return differenceInDays >= 0 && differenceInDays <= 14;
+    }
+
     return (
         <div className='grocery-item-container col'>
-            <img className='organic-indicator' src={ organic ? '/assets/organic-green.svg' : '/assets/organic-greyed.svg'} alt='Organic Indicator' title='Organic Indicator'/>
+            <div className='row indicators-container'>
+                <img className='indicator-icon' src={ organic ? '/assets/organic-green.svg' : '/assets/organic-greyed.svg'} alt='Organic Indicator' title='Organic Indicator'/>
+                {getExpiredItems(expiration) ? <img className='indicator-icon' src='/assets/expiredicon.svg' alt='Expired Indicator'/> : null }
+                {getExpiringItems(expiration) ? <img className='indicator-icon' src='/assets/expiringicon.svg' alt='Expired Indicator'/> : null }
+            </div>
             <div className='grocery-item-image-container col center'>
                 <img className='grocery-item-image' src={`https://www.themealdb.com/images/ingredients/${name}.png`} alt={`${name} Image`}/>
             </div>

@@ -83,7 +83,7 @@ function ItemDetails({ convertDateToMMDDYYYY }) {
             </div>
 
             <div id='details-container' className='center'>
-                <img className='organic-indicator' src={ currentGroceryItem.is_organic ? '/assets/organic-green.svg' : '/assets/organic-greyed.svg'} alt='Organic Indicator' title='Organic Indicator'/>
+                <img className='indicator-icon' src={ currentGroceryItem.is_organic ? '/assets/organic-green.svg' : '/assets/organic-greyed.svg'} alt='Organic Indicator' title='Organic Indicator'/>
                 {currentGroceryItem.is_organic ? <p id='organic-text' className='uppercase'>Organic</p> : null}
                 <p id='detailed-item-name'>{currentGroceryItem.name}</p>
                 <div className='row detail'>

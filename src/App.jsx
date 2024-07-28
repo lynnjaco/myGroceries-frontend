@@ -26,7 +26,7 @@ function App() {
       <Router>
           <NavBar/>
         <Routes>
-          <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries}/> }/>
+          <Route path="/" element={ <GroceriesManager setGroceries={setGroceries} groceries={groceries} convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>
           <Route path="/addgroceryitem" element={ <NewGroceryForm/> }/>
           <Route path="/about" element={ <About /> }/>
           <Route path="/groceries/:id" element={ <ItemDetails convertDateToMMDDYYYY={convertDateToMMDDYYYY}/> }/>

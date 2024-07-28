@@ -7,9 +7,14 @@
     margin: 15px;
 }
 
-.organic-indicator {
+.indicator-icon {
     width: 35px;
     height: 35px;
+}
+
+.indicators-container {
+    width: 100%;
+    justify-content: space-between;
 }
 
 .grocery-item-image-container {
